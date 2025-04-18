@@ -20,7 +20,6 @@ Fill out the following `config.json` and place it in the same folder as the appl
 ## Screenshot
 ![LP4Py41dhm](https://github.com/user-attachments/assets/681de4fe-d63b-4710-9c99-9fc544217e19)
 
-
 ## Dependencies
 * NodeJS
 * Electron
