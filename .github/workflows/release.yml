@@ -29,6 +29,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
+      - name: Install Wine
+        run: sudo apt install wine
+
+      - name: Install Mono
+        run: |
+          sudo apt install -y apt-transport-https dirmngr gnupg ca-certificates software-properties-common 
+          sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+          sudo apt-add-repository 'deb https://download.mono-project.com/repo/ubuntu stable-focal main'
+          sudo apt update
+          sudo apt install -y mono-complete
+
       - name: Install Node
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
       
