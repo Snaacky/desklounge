@@ -35,25 +35,22 @@ jobs:
       - name: Install node_modules
         run: npm install
 
-      # - name: Build with Electron-Forge
-      #   run: npx electron-forge make --arch "x64" --platform "win32"
-
       - name: Install Wine
         run: |
           sudo apt install wine
-          which wine
           sudo ln -s /usr/bin/wine /usr/bin/wine64
-          which wine64
 
-      # - name: Install Mono
-      #   run: |
-      #     sudo apt install -y apt-transport-https dirmngr gnupg ca-certificates software-properties-common 
-      #     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-      #     sudo apt-add-repository 'deb https://download.mono-project.com/repo/ubuntu stable-focal main'
-      #     sudo apt update
-      #     sudo apt install -y mono-complete
-
+      - name: Install Mono
+        run: |
+          sudo apt install -y apt-transport-https dirmngr gnupg ca-certificates software-properties-common 
+          sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+          sudo apt-add-repository 'deb https://download.mono-project.com/repo/ubuntu stable-focal main'
+          sudo apt update
+          sudo apt install -y mono-complete
+          mono --version
+          which mono
       
-      
+      - name: Build with Electron-Forge
+        run: npx electron-forge make --arch "x64" --platform "win32"
 
       
