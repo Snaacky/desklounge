@@ -38,8 +38,11 @@ jobs:
       - name: Build with Electron-Forge
         run: npx electron-forge make --arch "x64" --platform "win32"
 
-      # - name: Install Wine
-      #   run: sudo apt install wine
+      - name: Install Wine
+        run: |
+          sudo apt install wine
+          which wine
+          which wine64
 
       # - name: Install Mono
       #   run: |
