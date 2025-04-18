@@ -29,8 +29,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
+      - name: Install Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+
       - name: Build/release Electron app
-        uses: jsoma/action-electron-forge@v2
+        uses: samuelmeuli/action-electron-builder@v1
         with:
           github_token: ${{ secrets.github_token }}
           release: ${{ startsWith(github.ref, 'refs/tags/v') }}
@@ -46,8 +49,6 @@ jobs:
       #     sudo apt update
       #     sudo apt install -y mono-complete
 
-      # - name: Install Node
-      #   uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
       
       # - name: Install node_moduels
       #   run: npm install
