@@ -18,10 +18,6 @@ on:
   workflow_dispatch:
   workflow_call:
 
-# defaults:
-#   run:
-#     shell: bash
-
 jobs:
   check:
     runs-on: windows-latest
@@ -35,28 +31,10 @@ jobs:
       - name: Install node_modules
         run: npm install
       
-      # - name: Install Wine (32-bit)
-      #   run: |
-      #     dpkg --add-architecture i386 
-      #     apt-get update
-      #     apt-get install wine32:i386 -y
-
-      # - name: Install Wine (64-bit)
-      #   run: |
-      #     sudo apt install wine
-      #     sudo ln -s /usr/bin/wine /usr/bin/wine64
-
-      # - name: Install Mono
-      #   run: |
-      #     sudo apt install -y apt-transport-https dirmngr gnupg ca-certificates software-properties-common 
-      #     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-      #     sudo apt-add-repository 'deb https://download.mono-project.com/repo/ubuntu stable-focal main'
-      #     sudo apt update
-      #     sudo apt install -y mono-complete
-      #     mono --version
-      #     which mono
-      
       - name: Build with Electron-Forge
         run: npx electron-forge make --arch "x64" --platform "win32"
 
-      
+      - name: Upload artifacts
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          path: D:\a\desklounge\desklounge\out\make
