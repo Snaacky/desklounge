@@ -42,6 +42,7 @@ jobs:
         run: |
           sudo apt install wine
           which wine
+          sudo ln -s /usr/bin/wine /usr/bin/wine64
           which wine64
 
       # - name: Install Mono
