@@ -4,7 +4,7 @@ const helpers = require("./helpers");
 
 // attempts to load and parse the config.json from the relative path
 function loadConfig() {
-    const configPath = path.join(__dirname, '..', 'config.json');
+    const configPath = path.join(path.resolve("."), 'config.json');
     if (!fs.existsSync(configPath)) helpers.errorQuit(`config.json not found at ${configPath}.`);
 
     try {
